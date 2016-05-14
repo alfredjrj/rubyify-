@@ -139,7 +139,7 @@ class StoresController < ApplicationController
        def default_homepage(store)
         
         store.pages.create( name: "Home", template: %{
-         <h1> Hello {{ store.name }} </h1>
+        
           
         {% for item in store.items %} 
           <img  src= "{{item.image_lg}}"> </img>
@@ -157,9 +157,9 @@ class StoresController < ApplicationController
         store.pages.create(name: "About", template: %{
            <h1> Hello {{ store.name }} </h1>
             
-            We are located {{ store.address }}.
+            We are located on {{ store.address }}.
             
-            <h1>  Here why we are different </h1>
+            <h1>  Here is why we are different </h1>
                {{ store.about }}
           }
           )
