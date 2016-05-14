@@ -1,0 +1,71 @@
+ 
+
+
+
+
+  
+
+<div class="container marketing" >
+  
+      <div class="row">
+        
+
+        <div class="col-lg-4">
+           <% @user.stores.each do |store| %>
+         
+            <%= link_to image_tag(store.image.url(:large)) %>
+            <h2><%= store.name %></h2>
+            <p><%= store.about %> </p>
+            <p> <%= link_to ' Customize Store | ',   stores_customize_path(@user, store)    %> 
+            <%= link_to ' Add Item | ',   stores_additem_path(@user, store)    %>  <%= link_to ' Show store |',   store_path(store)    %></p>
+            
+          <p> <%= link_to 'Destroy', user_store_path(@user, store), :method => :delete, :confirm => "Are you sure?" %> 
+          <%= link_to  '| edit' , edit_user_store_path(@user, store) %> </p>
+              
+                
+          <% end %>
+         
+        </div>
+        
+        
+        
+        <div class="col-lg-8">
+              <h1>  Activity feed  | reports   </h1>
+             
+           
+              
+             <% @user.stores.each do |store| %>
+                
+                  
+                  <div class="polaroid" >
+                      <h3><%=  store.name %> </h3>
+                    
+                      <% store.orders.each do |order| %>
+                      
+                            <% if order.status == true  %>
+                        
+                                <div style="border:solid black 2px"> 
+                                    <p> Order Id: <%=  order.id %> </p>
+                                    
+                                    <%  order.item_orders.each do |item_order| %>
+                                      <p> <%= item_order.item.name %>  $ <%= item_order.item.price %> </p>
+                                    <% end %>
+                                    
+                                    <p> TOTAL $: <%= order.total %> </p>
+                                 </div>  
+                                
+                            <% end %>
+                          
+               
+                       <% end %>
+                    
+                   </div> 
+                      
+              <% end %>
+        </div>
+        
+        
+       </div>
+        
+</div>
+

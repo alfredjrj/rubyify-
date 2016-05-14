@@ -1,0 +1,33 @@
+
+         <div class="form-group" >
+
+
+
+          <%= form_for :item ,  url:store_items_path(@store) do |f| %>
+            
+          
+                <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"name"%>
+    
+                
+                <%= f.text_field :price , :class => 'form-control' , :placeholder=>"price" %>
+                  
+                  
+                <%= f.text_field :quantity , :class => 'form-control' , :placeholder=>"quantity"%>
+                
+                 <h4> Track Inventory <%=  f.check_box :inventory ,  :style => ' transform: scale(1.7);' %>  </h3>
+                  
+                  
+                <%= f.text_area :description , :class => 'form-control' , :placeholder=>"description" %>
+                
+                 <%= f.file_field :image  , :class => 'form-control' %>
+  
+                <%= f.submit "create item", :class => 'btn btn-primary btn-lg' %>
+              
+          <% end %>
+            
+
+             
+           
+        </div>
+        
+   

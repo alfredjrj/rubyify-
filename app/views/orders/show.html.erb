@@ -1,0 +1,67 @@
+
+
+
+
+ 
+
+ 
+
+ 
+
+   <% @order.item_orders.each do |item_order| %>
+
+<div class="row polaroid" >
+        
+        
+
+       <div class="col-md-4">
+      
+           <%= link_to image_tag(item_order.item.image.url(:med)), item_order.item.image.url %>
+        
+       </div> 
+       
+       
+        <div class="col-md-4">
+     
+          <p> <%= item_order.item.name %> </p>
+          <p> <%= item_order.item.price %> </p>
+          <p> order id: <%= @order.id %> store_id: <%= @order.store_id %>  </p>
+         
+        
+       </div> 
+       
+       <div class="col-md-4">
+       
+          <%= form_for item_order ,  url:store_item_order_path(@store ,item_order ), html: {method: "patch"} do |f| %> 
+           <%= f.number_field :quantity, value: item_order, min: 1 %>
+           <% end %> 
+           <%= link_to "remove from cart", store_item_order_path(@order.store_id , item_order ), method: :delete %> <br> 
+       </div> 
+        
+       
+</div>
+
+   <% end %> 
+   
+   <div class="row polaroid">
+       
+       <h3> TOTAL $:  <%= @order.total %> </h3>
+       
+    </div>
+         
+<div class="row" >
+
+  <div class="col-md-4">
+       
+<%= button_to "cancel checkout",  store_order_path(@store , @order), method: :delete , :class => "btn btn-primary btn-lg"%>
+ 
+  </div>
+
+  <div class="col-md-4">
+<%= button_to "proceed with checkout",  store_orders_path(@store , @order), method: :post , :class => "btn btn-primary btn-lg"%>
+
+ </div>
+
+
+
+</div> 

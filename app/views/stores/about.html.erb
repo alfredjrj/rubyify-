@@ -1,0 +1,4 @@
+  <% template = Liquid::Template.parse(@page.template) %>
+ 
+ 
+    <%= template.render('store' => @store).html_safe %>

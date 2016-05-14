@@ -1,0 +1,13 @@
+
+
+
+
+
+<div class="form-group" >
+  
+    <%= form_for :link ,  url:store_links_path(@store) do |f| %>
+      <%= f.text_field :link , :class => 'form-control'  , :placeholder=>"link"%>  
+      <%= f.submit "add link", :class => 'btn btn-primary btn-lg' %>
+    <% end %>
+    
+  </div>

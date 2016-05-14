@@ -1,0 +1,141 @@
+<div class="row"   id="home">
+    <div class="col-md-8">   
+    
+     
+  <%= link_to image_tag(@store.image.url(:background)), @store.image.url %>
+              
+    </div>
+ </div>    
+ 
+
+ 
+  <div> 
+   <% @page = @store.pages.find_by(name: 'Home' ) %>
+   <% template = Liquid::Template.parse(@page.template) %>
+  <%= template.render('store' => @store).html_safe %>
+    
+  </div> 
+    
+ 
+
+
+ 
+ 
+ 
+ <% @store.items.each do |item| %>
+ 
+   
+<div class="polaroid" >
+    <%= link_to image_tag(item.image.url(:large)), item.image.url %>
+  
+   <div class="container" style="  position:relative ; left:270px ; top:-130px ; padding: 10px 20px;">
+    <h2><%= item.name %></h2>
+    <p> Price $<%= item.price %> </p>
+    <p> Quantity in stock: <%= item.quantity %> </p>
+     
+     <% if current_user?(@store.user) %>
+      <p> <%= link_to "delete", store_item_path(@store,item), method: :delete %></p>
+      <% else %> 
+       
+            <%=  form_for :item_order,  url:store_item_orders_path(@store) do |f|  %> 
+           
+              <%= f.hidden_field :item_id, :value => item.id %>
+                <%= f.number_field :quantity, :value=> 1, min: 1 %>
+              <%= f.submit "add to cart", :class => 'btn btn-primary btn-lg' %>
+          
+            <% end %> 
+            
+       
+    <% end %>
+    
+  </div>
+ 
+    
+</div>   
+   
+  <% end %> 
+  
+<h1>New video</h1>
+
+
+ <!--<video id="video" width="640" height="480" autoplay></video>-->
+ <!--  <button id="snap">Snap Photo</button>-->
+ <!-- <canvas style= "position: relative; border:solid black 2px;" id="canvas" width="640" height="480"></canvas>-->
+
+
+  
+  <div id="about"> 
+   <% @page = @store.pages.find_by(name: 'About' ) %>
+   <% template = Liquid::Template.parse(@page.template) %>
+  <%= template.render('store' => @store).html_safe %>
+    
+  </div> 
+    
+    
+
+ <% @store.links.each do |link| %>
+  
+   <h2><%= link.link %></h2>
+   
+  
+  <% end %> 
+  
+<!--  <script>-->
+<!--  window.addEventListener("DOMContentLoaded", function() {-->
+   <!--Grab elements, create settings, etc.-->
+<!--  var canvas = document.getElementById("canvas"),-->
+<!--    context = canvas.getContext("2d"),-->
+<!--    video = document.getElementById("video"),-->
+<!--    videoObj = { "video": true },-->
+<!--    errBack = function(error) {-->
+<!--      console.log("Video capture error: ", error.code); -->
+<!--    };-->
+
+ <!--Put video listeners into place-->
+  <!--if(navigator.getUserMedia) { // Standard-->
+<!--    navigator.getUserMedia(videoObj, function(stream) {-->
+<!--      video.src = stream;-->
+<!--      video.play();-->
+<!--    }, errBack);-->
+  <!--} else if(navigator.webkitGetUserMedia) { // WebKit-prefixed-->
+<!--    navigator.webkitGetUserMedia(videoObj, function(stream){-->
+<!--      video.src = window.webkitURL.createObjectURL(stream);-->
+<!--      video.play();-->
+<!--    }, errBack);-->
+<!--  }-->
+  <!--else if(navigator.mozGetUserMedia) { // Firefox-prefixed-->
+<!--    navigator.mozGetUserMedia(videoObj, function(stream){-->
+<!--      video.src = window.URL.createObjectURL(stream);-->
+<!--      video.play();-->
+<!--    }, errBack);-->
+
+<!--  }-->
+  
+   
+
+<!--Trigger photo take-->
+<!--document.getElementById("snap").addEventListener("click", function(e) {-->
+<!--  context.drawImage(video, 0, 0, 640, 480);-->
+<!--});-->
+
+<!--}, false);-->
+
+
+<!-- var objects = new tracking.ObjectTracker(-->
+<!--    ['face', 'eye', 'mouth']);-->
+
+
+<!--objects.on('track',function(event) { -->
+<!--  if (event.data.length === 0) { -->
+    <!--No objects were detected in this frame.-->
+<!--  } else { -->
+<!--   event.data.forEach(function(rect) { -->
+   <!--draw rect.x, rect.y, rect.height, rect.width -->
+<!--  });-->
+<!-- }-->
+<!--});-->
+
+
+<!--tracking.track('#canvas', objects);-->
+
+<!--</script>-->

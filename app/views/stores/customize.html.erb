@@ -1,0 +1,39 @@
+         
+ 
+    
+  
+   
+ 
+     
+
+<!--  setcion on creating stores  and stores owned -->
+
+<div class="row">
+    
+
+    <div class="col-md-4" id="iteminputs">
+
+        <%= render "links/form" %>
+        
+        <%=  render "pages/form"  %>
+    </div>
+    
+     <div class="col-md-8">
+         
+         <iframe id="preview" src= <%= store_path(@store) %>  width="800"  height="450" ; style=" border:2px solid black; position:absolute ; 
+         top:50px;">
+        </iframe>
+         <button id="phone_view" class="btn btn-primary btn-lg"  style="position:absolute; left:50px ;">PHONE</button>  
+         <button  id="desktop_view" class="btn btn-primary btn-lg"   style="position:absolute ; left:150px ;" >DESKTOP</button> 
+    </div>
+    
+    
+</div>
+
+
+
+
+
+
+  
+

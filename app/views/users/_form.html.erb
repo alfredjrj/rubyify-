@@ -1,0 +1,33 @@
+ <div class="row" id="form_user">              
+       <div class="col-md-4" id="userinputs">
+             <div class="form-group" >
+
+
+
+          <%= form_for(@user)  do |f| %>
+          
+                 <%= render 'shared/error_messages', object: f.object %>
+            
+          
+                <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"name"%>
+            
+             
+                <%= f.text_field :email , :class => 'form-control' , :placeholder=>"email" %>
+                
+                <%= f.text_field :password , :class => 'form-control' , :placeholder=>"password" %>
+           
+           
+                <%= f.text_field :password_confirmation , :class => 'form-control' , :placeholder=>"password_confirmation" %>
+           
+             
+                <%= f.submit "create user", :class => 'btn btn-primary btn-lg' %>
+              
+          <% end %>
+            
+  
+  
+             
+           
+        </div>
+    </div>
+</div> 

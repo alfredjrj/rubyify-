@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  subtotal: 1.5
+  total: 1.5
+  shipping: 1.5
+  status: false
+  receipt: MyText
+
+two:
+  subtotal: 1.5
+  total: 1.5
+  shipping: 1.5
+  status: false
+  receipt: MyText

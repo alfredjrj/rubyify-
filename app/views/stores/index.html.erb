@@ -1,0 +1,36 @@
+
+
+
+
+
+<h1>   search the catalog of our stores</h1>
+
+
+ <% @stores.each do |store| %>
+ 
+  
+ 
+   <div class="container marketing" >
+       
+  
+      <div class="row">
+        <div class="col-lg-4">
+            <%= link_to image_tag(store.image.url(:large)), store.image.url %>
+          
+          <h2><%= store.name %></h2>
+          <p><%= store.about %></p>
+     
+          <p>  <%= link_to ' Show store ',   store_path(store)    %></p>
+       
+        </div>
+        </div>
+        
+      
+     
+        
+    </div>
+    
+    
+    
+    
+  <% end %>

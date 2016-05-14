@@ -1,0 +1,49 @@
+
+
+
+
+          
+  
+
+
+
+
+    
+<div class="jumbotron">
+    <div id="createstore">
+            
+          <div class="row"  >
+                  
+                <div class="col-md-3">   
+                  <h1> LAUNCH YOUR OWN STORE</h1> 
+                </div>
+                
+                <div class="col-md-3">   
+                    <%=  image_tag("rocket.png" , id:"rocket") %>
+                </div>
+                
+                <div class="col-md-6">
+                       <%= render "welcome/carousel" %>
+                </div>
+                
+          </div> 
+          
+          
+                  <%= render "users/form" %>
+                
+
+          <div class="row">
+                   
+                <div class="col-md-4"> 
+                  <%= image_tag("shopping_bag.png", :size => "250x250") %>
+                 </div>
+              
+                 <div class="col-md-4">   <h1> BROWSE OUR STORES !</h1>  </div>
+                       
+                 <div class="col-md-4" id="purple_border"> 
+                     <%= button_to "TAKE ME AWAY", stores_path,    :class => "btn btn-primary btn-lg", :method => :get %>
+                 </div>
+          </div> 
+          
+    </div>
+</div>

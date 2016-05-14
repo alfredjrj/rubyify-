@@ -1,0 +1,54 @@
+
+         <!--<div class="form-group" >-->
+
+
+
+<strong> pages\</strong>
+
+
+ <ul class="nav nav-tabs">
+<% @store.pages.each do |page| %> 
+
+    <li><a class= "pagesnav" id ="<%= page.name %>"  ><%= page.name %></a></li>
+  
+<!--  when clicked -->
+
+<% end %> 
+
+ 
+  </ul>
+  
+<% @store.pages.each do |page| %> 
+
+ <!--dynamic id-->
+   <div id = "<%= page.name %>page" class = "pages" >
+          <%= form_for :page ,  url:store_page_path(@store , :id => page.id), html: {method: "patch"} do |f| %>
+            
+          
+                <%= f.text_field :name , :class => 'form-control'  , :value=> page.name %>
+    
+                  
+                <%= f.text_area :template  ,  :rows=> "10" ,  :cols=> "3" , :class => 'form-control' , :value => page.template    %>
+  
+                <%= f.submit "update page", :class => 'btn btn-primary btn-lg' %>
+        
+              
+          <% end %>
+    </div>
+            
+  <% end %> 
+             
+           
+     
+     <script>
+       $(document).ready(function(){
+         $(".pages").hide(); 
+    $(".pagesnav").click(function(){
+      
+         $(".pages").hide(); 
+         $("#"+this.id+"page").show();
+    
+    });
+});
+       
+     </script>
