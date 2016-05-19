@@ -6,7 +6,7 @@ class Store < ActiveRecord::Base
     has_many :orders, dependent: :destroy 
     
      validates :name, presence: true ,  length: { maximum: 255} , uniqueness: true
-     validates :phone, presence: true ,  length: { maximum: 11 , minimum: 7 }
+     validates :phone, presence: true ,  length: { maximum: 9 , minimum: 7 }
      validates :address, presence: true
      validates :about, presence: true
      has_attached_file :image, styles: { small: "64x64", med: "100x100", large: "200x200" , background: "1100x500!" },

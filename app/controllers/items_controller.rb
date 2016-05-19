@@ -12,8 +12,6 @@ class ItemsController < ApplicationController
     
   end
 
-  def destroy
-  end
 
 
   def destroy
@@ -27,6 +25,7 @@ class ItemsController < ApplicationController
   end
   
   def index 
+    @store = Store.find(params[:store_id])
       
   end
   

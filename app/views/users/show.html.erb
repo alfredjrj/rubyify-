@@ -20,7 +20,7 @@
             <%= link_to ' Add Item | ',   stores_additem_path(@user, store)    %>  <%= link_to ' Show store |',   store_path(store)    %></p>
             
           <p> <%= link_to 'Destroy', user_store_path(@user, store), :method => :delete, :confirm => "Are you sure?" %> 
-          <%= link_to  '| edit' , edit_user_store_path(@user, store) %> </p>
+          <%= link_to  '| edit' , edit_user_store_path(@user, store) %> <%= link_to "| items edit & delete" ,  store_items_path(store) %>  </p>
               
                 
           <% end %>
