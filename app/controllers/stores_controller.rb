@@ -1,7 +1,7 @@
 class StoresController < ApplicationController
   
- before_action :logged_in_user, only: [:create, :customize,  :new ]
- before_action :correct_user, only: [:create, :customize,  :new ]
+ before_action :logged_in_user, only: [:create, :customize,  :new  ,:destroy , :update]
+ before_action :correct_user, only: [:create, :customize,  :new ,:destroy , :update ]
 
   def create
       @user =current_user
@@ -45,7 +45,7 @@ class StoresController < ApplicationController
     
       @user = current_user
      @store = Store.find(params[:id])
-    
+     @item = Item.new
   end
   
   

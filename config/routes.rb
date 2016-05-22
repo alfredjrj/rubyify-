@@ -50,7 +50,7 @@ Rails.application.routes.draw do
  get 'stores/:id/about'  => 'stores#about'
    
    resources :stores,  only: [:show, :index ] do
-     resources :items, only: [:create, :destroy , :show , :index]
+     resources :items, only: [:create, :destroy , :show , :index , :edit ,:update]
      resources :links, only: [:create]
      resources :pages,  only: [:create, :update , :destroy]
      resources :item_orders, only: [:create, :update, :destroy, :show ]

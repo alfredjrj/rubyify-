@@ -21,8 +21,25 @@ class ItemsController < ApplicationController
     render "stores/show"
   end
   
+  def edit 
+     @store = Store.find(params[:store_id])
+   @item =  Item.find(params[:id])
+  end 
+  
   def update
-  end
+    
+    @store = Store.find(params[:store_id])
+    @item = Item.find(params[:id]) 
+  
+   
+    
+    if @item.update_attributes(item_params)
+     render 'show'
+    else 
+      render 'edit'
+    end 
+    
+  end 
   
   def index 
     @store = Store.find(params[:store_id])
@@ -31,6 +48,6 @@ class ItemsController < ApplicationController
   
    private
       def item_params
-        params.require(:item).permit(:price, :quantity, :name , :rating , :image )
+        params.require(:item).permit(:price, :quantity, :name , :rating ,  :description , :image )
       end
 end

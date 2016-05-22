@@ -10,6 +10,7 @@ gem 'liquid'
 
 gem 'bootstrap-sass', '~> 3.3.6'
 
+gem 'aws-sdk'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.2.4'
 # Use SCSS for stylesheets

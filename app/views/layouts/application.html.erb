@@ -20,16 +20,17 @@
   <%= render "layouts/header" %>
      
    
-   <div class="container">
+   <div class="container" >
     
-   <!--<div  style="position:absolute; z-index:5;opacity:0.4;">-->
+   <div id="flash_messages"  style="position:fixed; top: 100px; ">
+   <!--style="position:absolute; z-index:5;opacity:0.4;"-->
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>
       <% end %>
       
     <%= debug(params) if Rails.env.development? %>
      
-     <!--</div>-->
+     </div>
     
     <%= yield %>
     

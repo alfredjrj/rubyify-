@@ -1,0 +1,16 @@
+
+
+
+
+<% flash.each do |type, message| %>
+  $("#flash_messages").html(" <div class ='alert alert-success'>  <%= message.join("<br>").html_safe %></div>")
+  
+<% end %>
+
+
+  
+  
+$(document).ready(function(){
+   
+   $('.alert').fadeOut(10000);
+});

@@ -48,7 +48,7 @@
                                     <p> Order Id: <%=  order.id %> </p>
                                     
                                     <%  order.item_orders.each do |item_order| %>
-                                      <p> <%= item_order.item.name %>  $ <%= item_order.item.price %> </p>
+                                      <p> <%= item_order.item.name %>  $ <%= item_order.item.price %> * <%=  item_order.quantity %> </p>
                                     <% end %>
                                     
                                     <p> TOTAL $: <%= order.total %> </p>

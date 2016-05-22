@@ -3,7 +3,8 @@
 
 
 
-          <%= form_for :item ,  url:store_items_path(@store) do |f| %>
+          
+             <%= form_for [@store , @item ] do |f| %>
             
           
                 <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"name"%>

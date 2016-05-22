@@ -6,15 +6,23 @@
 
     $(document).ready(function(){
     $("#phone_view").click(function(){
-        $("#preview").width(580);
+        $("#preview").width(700);
            $("#preview").height(870);
            $("#preview").css("left", "50px")
     });
     
      $("#desktop_view").click(function(){
-        $("#preview").width(800);
-           $("#preview").height(450);
+        $("#preview").width(1400);
+           $("#preview").height(850);
+           
+           
     });
   
 });
     
+    
+    
+    
+     
+     
+     
