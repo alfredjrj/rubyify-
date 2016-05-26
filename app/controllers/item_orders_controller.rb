@@ -8,6 +8,7 @@ class ItemOrdersController < ApplicationController
   # end
   
   def create
+    #d
    @store = Store.find(params[:store_id])
    @order = current_order(@store.id)
    @order.store_id = @store.id
@@ -15,6 +16,7 @@ class ItemOrdersController < ApplicationController
    @item = Item.find(params[:item_order][:item_id])
    
    flash.now[:notice] = ["#{@item.name} has been added to your cart " ]
+   
    
     if @order.item_orders.exists?(:item_id=> @item.id )
     else
