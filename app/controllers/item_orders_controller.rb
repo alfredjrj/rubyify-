@@ -10,7 +10,7 @@ class ItemOrdersController < ApplicationController
   def create
    @store = Store.find(params[:store_id])
    @order = current_order(@store.id)
-   @order.store_id = @store.id
+   @order.store_id = @store.idra
    
    @item = Item.find(params[:item_order][:item_id])
    

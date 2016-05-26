@@ -54,7 +54,7 @@ Rails.application.routes.draw do
      resources :links, only: [:create]
      resources :pages,  only: [:create, :update , :destroy]
      resources :item_orders, only: [:create, :update, :destroy, :show ]
-     resources :orders, only: [:show, :create , :destroy ]
+     resources :orders, only: [:index, :create , :destroy ]
 end
 
 

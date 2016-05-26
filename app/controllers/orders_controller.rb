@@ -32,7 +32,7 @@ class OrdersController < ApplicationController
     
   end 
   
-  def show 
+  def index
        @store = Store.find(params[:store_id])
        @order = current_order(@store.id)
        @order.save
