@@ -29,29 +29,30 @@
     <%= link_to image_tag(item.image.url(:large)), item.image.url %>
   
    <div class="container" style="  position:relative ; left:270px ; top:-130px ; padding: 10px 20px;">
-    <h2><%= item.name %></h2>
-    <p> Price $<%= item.price %> </p>
-    <p> Quantity in stock: <%= item.quantity %> </p>
-     
-
-       
-            <%=  form_for :item_order, remote: true,  url:store_item_orders_path(@store) do |f|  %> 
-           
-              <%= f.hidden_field :item_id, :value => item.id %>
-                <%= f.number_field :quantity, :value=> 1, min: 1 , max:item.quantity %><br>
-              <%= f.submit "add to cart", :class => 'btn btn-primary btn-lg' %>
+        <h2><%= item.name %></h2>
+        <p> Price $<%= item.price %> </p>
+        <%  if item.inventory %>
+            <% if item.quantity !=0 %>
+                  <p> Quantity in stock: <%= item.quantity %> </p>
+            <% else %> 
+                  <h3> SOLD OUT </h3>
+            <% end %> 
           
-            
-            
+        <% end %>
        
-    <% end %>
+     
+        <%=  form_for :item_order, remote: true,  url:store_item_orders_path(@store) do |f|  %> 
+          <%= f.hidden_field :item_id, :value => item.id %>
+            <%= f.number_field :quantity, :value=> 1, min: 1 , max: max_value(item) %><br>
+          <%= f.submit "add to cart", :class => 'btn btn-primary btn-lg' %>
+        <% end %>
     
-  </div>
+   </div>
  
     
 </div>   
    
-  <% end %> 
+<% end %> 
   
 
 
@@ -68,11 +69,8 @@
    
 
  <% @store.links.each do |link| %>
-  
    <h2><%= link.link %></h2>
-   
-  
-  <% end %> 
+ <% end %> 
   
   
   <!--<h1>New video</h1>-->

@@ -17,14 +17,16 @@ class OrdersController < ApplicationController
       @order.save
       session.delete(:"order_id#{@store.id}") 
       
-       @order.item_orders.each do |bought_item|
+      @order.item_orders.each do |bought_item|
      
+       
+     if bought_item.item.inventory == true   
         
         @item = Item.find(bought_item.item.id)    
         @item.quantity = @item.quantity - bought_item.quantity
         @item.save
         
-     
+     end 
       
        end  
        redirect_to  store_path(@store)

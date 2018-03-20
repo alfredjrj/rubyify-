@@ -1,23 +1,19 @@
 
+
+<div class="row">
+    <div class="col-md-8" id="iteminputs">       
          <div class="form-group" >
-
-
 
           
              <%= form_for [@store , @item ] do |f| %>
             
-          
                 <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"name"%>
-    
                 
                 <%= f.text_field :price , :class => 'form-control' , :placeholder=>"price" %>
                   
-                  
+                 <h3> Track Inventory <%=  f.check_box :inventory ,  :style => ' transform: scale(1.7);' %>  </h3>
                 <%= f.text_field :quantity , :class => 'form-control' , :placeholder=>"quantity"%>
                 
-                 <h4> Track Inventory <%=  f.check_box :inventory ,  :style => ' transform: scale(1.7);' %>  </h3>
-                  
-                  
                 <%= f.text_area :description , :class => 'form-control' , :placeholder=>"description" %>
                 
                  <%= f.file_field :image  , :class => 'form-control' %>
@@ -25,10 +21,19 @@
                 <%= f.submit "create item", :class => 'btn btn-primary btn-lg' %>
               
           <% end %>
+     
             
-
-             
-           
         </div>
-        
+    </div>
+</div>
    
+<script>
+
+  $("#item_quantity").hide();
+ 
+ $("#item_inventory").change(function(){
+  var bool_val = $("#item_inventory").is(':checked');
+   $("#item_quantity").toggle(bool_val);
+  });
+ 
+</script>

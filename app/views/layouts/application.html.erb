@@ -22,7 +22,7 @@
    
    <div class="container" >
     
-   <div id="flash_messages"  style="position:fixed; top: 100px; ">
+   <div id="flash_messages"  style="position:fixed; top: 100px; right:100px; ">
    <!--style="position:absolute; z-index:5;opacity:0.4;"-->
       <% flash.each do |message_type, message| %>
         <%= content_tag(:div, message, class: "alert alert-#{message_type}") %>

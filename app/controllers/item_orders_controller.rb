@@ -8,7 +8,7 @@ class ItemOrdersController < ApplicationController
   # end
   
   def create
-    #d
+  
    @store = Store.find(params[:store_id])
    @order = current_order(@store.id)
    @order.store_id = @store.id
@@ -20,19 +20,17 @@ class ItemOrdersController < ApplicationController
    
     if @order.item_orders.exists?(:item_id=> @item.id )
     else
+      
         @item_order = @order.item_orders.new(item_order_params)
         
          if( Item.find(@item_order.item.id).quantity < @item_order.quantity )
-           
             flash.now[:notice] << "not enough in stock"
          end 
+         
             
         @order.total = 0 
-     
         @order.item_orders.each do  |item_order|
-                 
-            @order.total = @order.total + (item_order.item.price * item_order.quantity) 
-           
+              @order.total = @order.total + (item_order.item.price * item_order.quantity) 
         end  
       
         @order.save
@@ -43,7 +41,7 @@ class ItemOrdersController < ApplicationController
      
      respond_to do |format|
         format.js 
-    end
+     end
    
    
   end
