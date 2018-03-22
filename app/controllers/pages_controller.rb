@@ -4,7 +4,7 @@ class PagesController < ApplicationController
 
   def destroy
   end
-
+# sdf
   def update
      @store = Store.find(params[:store_id])
       @page = @store.pages.find(params[:id])

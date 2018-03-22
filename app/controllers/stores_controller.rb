@@ -140,7 +140,7 @@ class StoresController < ApplicationController
         
         store.pages.create( name: "Home", template: %{
         
-        <h2> The following is rendered through Liquid Templating  system </h2> 
+        # <h2> The following is rendered through Liquid Templating  system </h2> 
           
         {% for item in store.items %} 
           <img  src= "{{item.image_lg}}"> </img>
