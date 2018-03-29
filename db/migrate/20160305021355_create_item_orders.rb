@@ -4,6 +4,7 @@ class CreateItemOrders < ActiveRecord::Migration
       t.references :item, index: true, foreign_key: true
       t.references :order, index: true, foreign_key: true
       t.float :paid
+      t.integer :quantity, :integer
 
       t.timestamps null: false
     end

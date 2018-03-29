@@ -11,24 +11,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160520033316) do
+ActiveRecord::Schema.define(version: 20160305021355) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "customers", force: :cascade do |t|
-    t.string   "address"
+    t.string   "email"
+    t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  add_index "customers", ["store_id"], name: "index_customers_on_store_id", using: :btree
 
   create_table "item_orders", force: :cascade do |t|
     t.integer  "item_id"
     t.integer  "order_id"
     t.float    "paid"
+    t.integer  "quantity"
+    t.integer  "integer"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "quantity"
   end
 
   add_index "item_orders", ["item_id"], name: "index_item_orders_on_item_id", using: :btree
@@ -41,9 +45,9 @@ ActiveRecord::Schema.define(version: 20160520033316) do
     t.text     "description"
     t.string   "sku"
     t.boolean  "inventory"
+    t.integer  "store_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "store_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -54,9 +58,9 @@ ActiveRecord::Schema.define(version: 20160520033316) do
 
   create_table "links", force: :cascade do |t|
     t.text     "link"
+    t.integer  "store_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer  "store_id"
   end
 
   add_index "links", ["store_id"], name: "index_links_on_store_id", using: :btree
@@ -67,11 +71,14 @@ ActiveRecord::Schema.define(version: 20160520033316) do
     t.float    "shipping"
     t.boolean  "status"
     t.text     "receipt"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
     t.integer  "store_id"
+    t.string   "address"
+    t.integer  "customer_id"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
+  add_index "orders", ["customer_id"], name: "index_orders_on_customer_id", using: :btree
   add_index "orders", ["store_id"], name: "index_orders_on_store_id", using: :btree
 
   create_table "pages", force: :cascade do |t|
@@ -89,9 +96,9 @@ ActiveRecord::Schema.define(version: 20160520033316) do
     t.integer  "phone"
     t.string   "address"
     t.text     "about"
+    t.integer  "user_id"
     t.datetime "created_at",         null: false
     t.datetime "updated_at",         null: false
-    t.integer  "user_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -111,10 +118,12 @@ ActiveRecord::Schema.define(version: 20160520033316) do
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
 
+  add_foreign_key "customers", "stores"
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
   add_foreign_key "items", "stores"
   add_foreign_key "links", "stores"
+  add_foreign_key "orders", "customers"
   add_foreign_key "orders", "stores"
   add_foreign_key "pages", "stores"
   add_foreign_key "stores", "users"

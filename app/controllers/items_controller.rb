@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
  before_action :correct_user_item, only: [:create,  :edit ,:destroy , :update , :index ]
   
   def create
-   @store = Store.find(params[:store_id])
+    @store = Store.find(params[:store_id])
     @item = @store.items.create(item_params)
     
     if @item.inventory == false 
@@ -12,13 +12,9 @@ class ItemsController < ApplicationController
     end 
     
     @item.save
-    
     render 'show'
     # redirect_to action: "show", id: @item.id
-    
   end
-
-
 
   def destroy
     @store = Store.find(params[:store_id])
@@ -29,14 +25,13 @@ class ItemsController < ApplicationController
   
   def edit 
      @store = Store.find(params[:store_id])
-   @item =  Item.find(params[:id])
+     @item =  Item.find(params[:id])
   end 
   
   def update
     
     @store = Store.find(params[:store_id])
     @item = Item.find(params[:id]) 
-    
     
     if @item.update_attributes(item_params)
       if @item.inventory == false
@@ -47,12 +42,10 @@ class ItemsController < ApplicationController
     else 
       render 'edit'
     end 
-    
   end 
   
   def index 
     @store = Store.find(params[:store_id])
-      
   end
   
    private

@@ -6,6 +6,9 @@ class CreateOrders < ActiveRecord::Migration
       t.float :shipping
       t.boolean :status
       t.text :receipt
+      t.references  :store, index: true, foreign_key: true
+      t.string :address
+      t.references :customer,  index: true, foreign_key: true 
 
       t.timestamps null: false
     end

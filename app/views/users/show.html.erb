@@ -19,12 +19,14 @@
             <p> <%= link_to ' Customize Store | ',   stores_customize_path(@user, store)    %> 
             <%= link_to ' Add Item | ',   stores_additem_path(@user, store)    %>  <%= link_to ' Show store |',   store_path(store)    %></p>
             
-          <p> <%= link_to 'Destroy', user_store_path(@user, store), :method => :delete, :confirm => "Are you sure?" %> 
+          
+          <%= link_to 'Delete', user_store_path(action: :delete, user_id: @user.id, id: store.id ),method: :delete, 
+          data: {confirm: "Are you sure you want to delete the store named #{store.name} ?" } %>
+          
           <%= link_to  '| edit' , edit_user_store_path(@user, store) %> <%= link_to "| items edit & delete" ,  store_items_path(store) %>  </p>
               
                 
           <% end %>
-         
         </div>
         
         
@@ -32,30 +34,30 @@
         <div class="col-lg-8">
               <h1>  Activity feed  | reports   </h1>
              
-           
-              
              <% @user.stores.each do |store| %>
-                
-                  
+            
                   <div class="polaroid" >
-                      <h3><%=  store.name %> </h3>
+                      <h2><%=  store.name %> </h2>
+                      <% if store.items.empty? %> 
+                            <div class="alert alert-warning">
+                               <h4> Warning! You have no items!, Add an item to make sales </h4>
+                            </div>
+                      <% end %>  
                     
                       <% store.orders.each do |order| %>
                       
                             <% if order.status == true  %>
                         
                                 <div style="border:solid black 2px"> 
+                                    <p> Customer: <%= order.customer.email %>  </p>                                
                                     <p> Order Id: <%=  order.id %> </p>
-                                    
                                     <%  order.item_orders.each do |item_order| %>
                                       <p> <%= item_order.item.name %>  $ <%= item_order.item.price %> * <%=  item_order.quantity %> </p>
                                     <% end %>
-                                    
                                     <p> TOTAL $: <%= order.total %> </p>
                                  </div>  
                                 
                             <% end %>
-                          
                
                        <% end %>
                     

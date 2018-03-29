@@ -6,7 +6,7 @@ class PagesController < ApplicationController
   end
 # sdf
   def update
-     @store = Store.find(params[:store_id])
+      @store = Store.find(params[:store_id])
       @page = @store.pages.find(params[:id])
    
     if @page.update(page_params)

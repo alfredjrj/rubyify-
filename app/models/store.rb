@@ -4,6 +4,8 @@ class Store < ActiveRecord::Base
     has_many :links, dependent: :destroy  
     has_many :pages, dependent: :destroy 
     has_many :orders, dependent: :destroy 
+    has_many :customers, dependent: :destroy
+    
     
      validates :name, presence: true ,  length: { maximum: 255} , uniqueness: true
      validates :phone, presence: true ,  length: { maximum: 9 , minimum: 7 }

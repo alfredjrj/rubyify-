@@ -7,6 +7,7 @@ class CreateItems < ActiveRecord::Migration
       t.text :description
       t.string :sku
       t.boolean :inventory
+      t.references :store, index: true, foreign_key: true
       
 
       t.timestamps null: false

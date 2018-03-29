@@ -1,11 +1,7 @@
 <row>
-              
-        
-       
-              
+             
        <% if  /(\/stores\/)\d+$/.match(request.path)   %>
               
-        
         <div class="col-md-8">
             <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
@@ -18,10 +14,9 @@
                             <%= link_to "Discover",  stores_path %> 
                         </li>
                
-                          
-                        <li class="nav-item">
-                            <a class="nav-link" href="#home"> home</a>
-                        </li>
+                         <li class="nav-item">
+                         <%= link_to 'Home',  root_path   %> 
+                      </li>
                     </ul>
               
                     <ul class="nav navbar-nav navbar-right">
@@ -42,28 +37,7 @@
         </div>
         
        
-        <% elsif  root_path == request.path %> 
-
-
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                 
-                    <a class="navbar-brand" >RUBYIFIED => STORES</a>
-                   
-                    <!--<ul class="nav navbar-nav">-->
-                        
-                    <!--  <li class="nav-item">-->
-                    <!--    <a class="nav-link" href="#">About</a>-->
-                    <!--  </li>-->
-                   
-                    <!--</ul>-->
-                
-                      
-                     <%= render "sessions/new" %>
-                     
-                </div>
-        </nav>
-        
+      
         <% elsif   logged_in?   %>
     
            <div class="col-md-8">
@@ -105,67 +79,35 @@
                  </div>
              </div>
         </nav>
+    
+        <% else %> 
         
-        <% elsif /(\/orders\/)\d+$/.match(request.path) %> 
-        
-        
-        <div class="col-md-8">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
+        <!-- gets rendered in checkout and discover-->
+          <nav class="navbar navbar-inverse navbar-fixed-top">
                 <div class="container">
-                 
+                    
                     <a class="navbar-brand" >RUBYIFIED => STORES</a>
-                   
-                    <ul class="nav navbar-nav">
+                    
+                       <ul class="nav navbar-nav">
                         
+                        <li class="nav-item">
+                        <%= link_to "Home",  root_path %> 
+                        </li>
                         <li class="nav-item">
                         <%= link_to "Discover",  stores_path %> 
                         </li>
-               
-                        <li class="nav-item">
-                        <%= link_to "Home",  store_path(@store) %> 
-                        </li>
-                    </ul>
-              
-                    <ul class="nav navbar-nav navbar-right">
-                       
-                        <li class="nav-item">
-                          <%= link_to ' Checkout',   store_orders_path(@store )    %>
-                        </li>
-                      
-                    </ul>
-                
-                </div>
-           
-            </nav>
-        </div>
-        
-        
-        
-        <% else %> 
-        
-         <div class="col-md-8">
-            <nav class="navbar navbar-inverse navbar-fixed-top">
-                <div class="container">
-                 
-                    <a class="navbar-brand" >RUBYIFIED => STORES</a>
-                 
-                     
-                    <ul class="nav navbar-nav">
                         
-                      <li class="nav-item">
-                         <%= link_to 'Home',  root_path   %> 
-                      </li>
-                   
-                    </ul>
+                        <% if @store.try(:present?) %> 
+                            <li class="nav-item">
+                            <%= link_to @store.name,  store_path(@store) %> 
+                            </li>
+                        <% end %> 
+                        
+                        </ul> 
                      <%= render "sessions/new" %>
-              
-                 <%= request.path %> 
-                 
-                
-                
-                 </div>
-             </div>
-        </nav>
+                     
+                </div>
+            </nav>
         <% end %>
    
           

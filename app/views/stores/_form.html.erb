@@ -7,35 +7,25 @@
         <div class="col-md-4" id="storeinputs">
           <div class="form-group" >
             
-           
-
+  
           <%= form_for [@user , @store] do |f| %>
-          
-      <!--@store , url:user_stores_path(current_user)-->
-            
+        
               <%= render 'shared/error_messages', object: f.object %>
-              
                         
-                <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"store name"%>
+              <%= f.text_field :name , :class => 'form-control'  , :placeholder=>"store name"%>
             
-           
-                <%= f.text_field :address , :class => 'form-control' , :placeholder=>"address" , :id => "pac-input"%>
+              <%= f.text_field :address , :class => 'form-control' , :placeholder=>"address" , :id => "pac-input"%>
       
-                
-                <%= f.text_field :phone , :class => 'form-control' , :placeholder=>"phone" %>
+              <%= f.text_field :phone , :class => 'form-control' , :placeholder=>"phone" %>
                   
-                <%= f.text_area :about , :class => 'form-control' , :placeholder=>"about" %>
+              <%= f.text_area :about , :class => 'form-control' , :placeholder=>"about" %>
                 
-               <h3> store image </h3> <%= f.file_field :image  , :class => 'form-control' %>
-                
-           
-                <%= f.submit "create store", :class => 'btn btn-primary btn-lg' %>
-          
-                
+              <h3> store image </h3> <%= f.file_field :image  , :class => 'form-control' %>
+              
+              <%= f.submit "create store", :class => 'btn btn-primary btn-lg' %>
+        
           <% end %>
             
-       
-               
           </div>
       </div>
   </div>

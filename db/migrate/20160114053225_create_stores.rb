@@ -5,7 +5,7 @@ class CreateStores < ActiveRecord::Migration
       t.integer :phone
       t.string :address
       t.text :about
-     
+      t.references :user, index: true, foreign_key: true
 
       t.timestamps null: false
     end
